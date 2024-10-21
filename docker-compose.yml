@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  crm-service:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_DATASOURCE_URL: jdbc:h2:mem:testdb
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.h2.Driver
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD:
+  h2-console:
+    image: buildo/h2database
+    ports:
+      - "8080:8080"
+    environment:
+      H2_OPTIONS: -tcp -webAllowOthers -ifNotExists
