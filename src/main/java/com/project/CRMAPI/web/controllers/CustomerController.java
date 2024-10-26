@@ -4,6 +4,7 @@ import com.project.CRMAPI.application.services.CustomerService;
 import com.project.CRMAPI.application.services.UserService;
 import com.project.CRMAPI.domain.models.Customer;
 import com.project.CRMAPI.domain.models.User;
+import com.project.CRMAPI.web.dtos.CustomerPhotoUrlUpdateRequest;
 import com.project.CRMAPI.web.dtos.CustomerRequest;
 import com.project.CRMAPI.web.mappers.CustomerMapper;
 import org.slf4j.Logger;
@@ -40,5 +41,12 @@ public class CustomerController {
         Customer customer = CustomerMapper.toDomainModel(customerRequest, createdBy);
         Customer createdCustomer = customerService.createCustomer(customer);
         return ResponseEntity.ok(createdCustomer);
+    }
+
+    @PatchMapping("/{id}/photo-url")
+    public ResponseEntity<Customer> updateCustomerPhotoUrl(@PathVariable UUID id,
+                                                           @RequestBody CustomerPhotoUrlUpdateRequest request) {
+        Customer updatedCustomer = customerService.updatePhotoUrl(id, request.getPhotoUrl());
+        return ResponseEntity.ok(updatedCustomer);
     }
 }

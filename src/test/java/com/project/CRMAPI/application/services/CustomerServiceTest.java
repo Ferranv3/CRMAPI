@@ -7,9 +7,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 class CustomerServiceTest {
@@ -41,5 +44,24 @@ class CustomerServiceTest {
         assertEquals("userTest", savedCustomer.getName());
         assertEquals("testUser", savedCustomer.getSurname());
         Mockito.verify(customerRepository, Mockito.times(1)).save(customer);
+    }
+
+    @Test
+    void modifyPhoto_ShouldSaveCustomer() {
+        Customer customer = new Customer();
+        customer.setName("userTest");
+        customer.setSurname("testUser");
+
+        when(customerRepository.save(Mockito.any(Customer.class))).thenReturn(customer);
+        Customer savedCustomer = customerService.createCustomer(customer);
+        when(customerRepository.findById(any())).thenReturn(Optional.of(savedCustomer));
+        savedCustomer.setPhotoUrl("https://example.com/photos/usertest.jpg");
+        when(customerRepository.save(Mockito.any(Customer.class))).thenReturn(savedCustomer);
+        customerService.updatePhotoUrl(savedCustomer.getId(), "https://example.com/photos/usertest.jpg");
+
+
+        assertEquals(customer.getId(), savedCustomer.getId());
+        assertNotNull(savedCustomer.getPhotoUrl());
+        Mockito.verify(customerRepository, Mockito.times(2)).save(customer);
     }
 }

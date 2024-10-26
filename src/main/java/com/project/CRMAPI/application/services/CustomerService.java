@@ -5,6 +5,7 @@ import com.project.CRMAPI.domain.models.Customer;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class CustomerService {
@@ -19,6 +20,13 @@ public class CustomerService {
     }
 
     public Customer createCustomer(Customer customer) {
+        return customerRepository.save(customer);
+    }
+
+    public Customer updatePhotoUrl(UUID id, String photoUrl) {
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Customer not found with ID: " + id));
+        customer.setPhotoUrl(photoUrl);
         return customerRepository.save(customer);
     }
 }

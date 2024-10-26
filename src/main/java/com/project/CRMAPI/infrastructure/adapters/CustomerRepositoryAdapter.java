@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class CustomerRepositoryAdapter implements CustomerRepository {
@@ -21,6 +23,11 @@ public class CustomerRepositoryAdapter implements CustomerRepository {
     @Override
     public List<Customer> findAll() {
         return jpaCustomerRepository.findAll();
+    }
+
+    @Override
+    public Optional<Customer> findById(UUID id) {
+        return jpaCustomerRepository.findById(id);
     }
 
     @Override
