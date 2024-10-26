@@ -38,7 +38,6 @@ class AuthControllerIntegrationTest {
     private final String username = "testuser";
     private final String password = "testPassword";
     private final String email = "email@email.com";
-    private final String userRole = "USER";
 
     @BeforeEach
     void cleanDatabase() {
@@ -50,7 +49,6 @@ class AuthControllerIntegrationTest {
         SignUpRequest signUpRequest = SignUpRequest.builder()
                 .userName(username)
                 .password(password)
-                .role(userRole)
                 .email(email)
                 .build();
 
@@ -122,7 +120,6 @@ class AuthControllerIntegrationTest {
         User user = User.builder()
                 .username(username)
                 .password(passwordEncoder.encode(password))
-                .role(userRole)
                 .email(email)
                 .isAdmin(false)
                 .build();

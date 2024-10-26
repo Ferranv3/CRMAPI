@@ -26,7 +26,7 @@ class UserControllerIntegrationTest {
     @BeforeEach
     void setUp() {
         userRepository.deleteAll();
-        userRepository.save(new User(null, "admin", "passTest", "email@email.com", "ADMIN", true));
+        userRepository.save(new User(null, "admin", "passTest", "email@email.com", true));
     }
 
     @Test

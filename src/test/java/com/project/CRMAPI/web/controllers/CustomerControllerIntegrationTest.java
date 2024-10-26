@@ -18,6 +18,12 @@ import org.springframework.http.MediaType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.Optional;
+import java.util.UUID;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -125,7 +131,7 @@ class CustomerControllerIntegrationTest {
                 .email(email)
                 .password(passwordEncoder.encode(password))
                 .username(username)
-                .role("USER")
+                .isAdmin(true)
                 .build();
 
         userCreated = userRepository.save(user);
