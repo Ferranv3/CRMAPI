@@ -43,6 +43,13 @@ public class CustomerController {
         return ResponseEntity.ok(createdCustomer);
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<Customer> updateCustomer(@PathVariable UUID customerId,
+                                                   @RequestBody CustomerRequest customerRequest) {
+        Customer updatedCustomer = customerService.updateCustomer(customerId, customerRequest);
+        return ResponseEntity.ok(updatedCustomer);
+    }
+
     @PatchMapping("/{id}/photo-url")
     public ResponseEntity<Customer> updateCustomerPhotoUrl(@PathVariable UUID id,
                                                            @RequestBody CustomerPhotoUrlUpdateRequest request) {
