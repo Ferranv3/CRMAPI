@@ -56,4 +56,10 @@ public class CustomerController {
         Customer updatedCustomer = customerService.updatePhotoUrl(id, request.getPhotoUrl());
         return ResponseEntity.ok(updatedCustomer);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCustomer(@PathVariable UUID id) {
+        customerService.deleteCustomer(id);
+        return ResponseEntity.noContent().build();
+    }
 }

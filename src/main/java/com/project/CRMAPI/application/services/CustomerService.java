@@ -53,4 +53,10 @@ public class CustomerService {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
     }
+
+    public void deleteCustomer(UUID id) {
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Customer not found with ID: " + id));
+        customerRepository.delete(customer);
+    }
 }

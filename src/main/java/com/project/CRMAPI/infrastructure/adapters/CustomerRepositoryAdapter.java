@@ -34,4 +34,9 @@ public class CustomerRepositoryAdapter implements CustomerRepository {
     public Customer save(Customer customer) {
         return jpaCustomerRepository.save(customer);
     }
+
+    @Override
+    public void delete(Customer customer) {
+        jpaCustomerRepository.delete(customer);
+    }
 }

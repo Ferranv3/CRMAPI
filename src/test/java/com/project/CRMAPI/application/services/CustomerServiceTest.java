@@ -16,8 +16,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -101,5 +101,21 @@ class CustomerServiceTest {
         assertEquals(savedCustomer.getName(), customerRequest.getName());
         assertEquals(savedCustomer.getSurname(), customerRequest.getSurname());
         Mockito.verify(customerRepository, Mockito.times(2)).save(customer);
+    }
+
+    @Test
+    void deleteCustomer_ShouldDeleteCustomer() {
+        Customer customer = mock(Customer.class);
+        when(customerRepository.save(Mockito.any(Customer.class))).thenReturn(customer);
+        Customer savedCustomer = customerService.createCustomer(customer);
+        savedCustomer.setId(UUID.randomUUID());
+
+        when(customerRepository.findById(any())).thenReturn(Optional.of(savedCustomer));
+        customerService.deleteCustomer(savedCustomer.getId());
+
+        List<Customer> existingCustomers = customerService.getAllCustomers();
+
+        assertThat(existingCustomers.size()).isEqualTo(0);
+        Mockito.verify(customerRepository, Mockito.times(1)).save(customer);
     }
 }
