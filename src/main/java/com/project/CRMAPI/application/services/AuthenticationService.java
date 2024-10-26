@@ -2,7 +2,6 @@ package com.project.CRMAPI.application.services;
 
 import com.project.CRMAPI.application.ports.UserRepository;
 import com.project.CRMAPI.domain.models.User;
-import com.project.CRMAPI.web.dtos.LoginUserDto;
 import com.project.CRMAPI.web.dtos.LoginRequest;
 import com.project.CRMAPI.web.dtos.SignUpRequest;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -39,7 +38,7 @@ public class AuthenticationService {
         return userRepository.save(user);
     }
 
-    public User authenticate(LoginUserDto input) {
+    public User authenticate(LoginRequest input) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         input.getUserName(),

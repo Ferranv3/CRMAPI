@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface UserRepository {
+    Optional<User> findById(UUID id);
     List<User> findAll();
     Optional<User> findByEmail(String email);
     Optional<User> findByUsername(String email);

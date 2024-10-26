@@ -14,11 +14,11 @@ import static org.mockito.Mockito.when;
 
 class CustomerServiceTest {
 
+    private final CustomerRepository customerRepository = Mockito.mock(CustomerRepository.class);
+    private final CustomerService customerService = new CustomerService(customerRepository);
+
     @Test
     void testGetAllCustomers() {
-        CustomerRepository customerRepository = Mockito.mock(CustomerRepository.class);
-        CustomerService customerService = new CustomerService(customerRepository);
-
         Customer customer = new Customer(UUID.randomUUID(), "John", "Doe", null, new User(), null);
         when(customerRepository.findAll()).thenReturn(List.of(customer));
 
@@ -26,5 +26,20 @@ class CustomerServiceTest {
 
         assertEquals(1, customers.size());
         assertEquals("John", customers.get(0).getName());
+    }
+
+    @Test
+    void createCustomer_ShouldSaveCustomer() {
+        Customer customer = new Customer();
+        customer.setName("userTest");
+        customer.setSurname("testUser");
+
+        when(customerRepository.save(Mockito.any(Customer.class))).thenReturn(customer);
+
+        Customer savedCustomer = customerService.createCustomer(customer);
+
+        assertEquals("userTest", savedCustomer.getName());
+        assertEquals("testUser", savedCustomer.getSurname());
+        Mockito.verify(customerRepository, Mockito.times(1)).save(customer);
     }
 }

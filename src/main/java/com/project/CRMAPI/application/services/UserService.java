@@ -5,6 +5,7 @@ import com.project.CRMAPI.domain.models.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -13,6 +14,9 @@ public class UserService {
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+    public Optional<User> getUserById(UUID userId) {
+        return userRepository.findById(userId);
     }
 
     public List<User> getAllUsers() {

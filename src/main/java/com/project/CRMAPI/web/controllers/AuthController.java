@@ -3,9 +3,8 @@ package com.project.CRMAPI.web.controllers;
 import com.project.CRMAPI.application.services.AuthenticationService;
 import com.project.CRMAPI.domain.models.User;
 import com.project.CRMAPI.security.JwtService;
-import com.project.CRMAPI.web.dtos.LoginResponse;
-import com.project.CRMAPI.web.dtos.LoginUserDto;
 import com.project.CRMAPI.web.dtos.LoginRequest;
+import com.project.CRMAPI.web.dtos.LoginResponse;
 
 import com.project.CRMAPI.web.dtos.SignUpRequest;
 import org.slf4j.Logger;
@@ -40,9 +39,9 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginUserDto loginUserDto) {
-        logger.info("Request received: GET /auth/login {}", loginUserDto);
-        User authenticatedUser = authenticationService.authenticate(loginUserDto);
+    public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginRequest loginRequest) {
+        logger.info("Request received: GET /auth/login {}", loginRequest);
+        User authenticatedUser = authenticationService.authenticate(loginRequest);
 
         String jwtToken = jwtService.generateToken(authenticatedUser);
 
