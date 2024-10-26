@@ -1,4 +1,4 @@
-package com.project.CRMAPI.infraestructure.config;
+package com.project.CRMAPI.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

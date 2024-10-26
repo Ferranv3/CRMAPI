@@ -1,4 +1,4 @@
-package com.project.CRMAPI.infraestructure.config;
+package com.project.CRMAPI.security;
 
 import com.project.CRMAPI.application.ports.UserRepository;
 import org.springframework.context.annotation.Bean;
