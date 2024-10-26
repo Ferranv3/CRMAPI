@@ -1,8 +1,8 @@
-package com.project.CRMAPI.infraestructure.adapters;
+package com.project.CRMAPI.infrastructure.adapters;
 
 import com.project.CRMAPI.application.ports.UserRepository;
 import com.project.CRMAPI.domain.models.User;
-import com.project.CRMAPI.infraestructure.repositories.JpaUserRepository;
+import com.project.CRMAPI.infrastructure.repositories.JpaUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

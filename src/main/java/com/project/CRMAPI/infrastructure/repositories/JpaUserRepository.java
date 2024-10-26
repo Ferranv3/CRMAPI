@@ -1,4 +1,4 @@
-package com.project.CRMAPI.infraestructure.repositories;
+package com.project.CRMAPI.infrastructure.repositories;
 
 import com.project.CRMAPI.domain.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;

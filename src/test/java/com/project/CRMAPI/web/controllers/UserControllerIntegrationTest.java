@@ -1,7 +1,7 @@
 package com.project.CRMAPI.web.controllers;
 
 import com.project.CRMAPI.domain.models.User;
-import com.project.CRMAPI.infraestructure.repositories.JpaUserRepository;
+import com.project.CRMAPI.infrastructure.repositories.JpaUserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

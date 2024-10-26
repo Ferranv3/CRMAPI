@@ -2,8 +2,8 @@ package com.project.CRMAPI.web.controllers;
 
 import com.project.CRMAPI.domain.models.Customer;
 import com.project.CRMAPI.domain.models.User;
-import com.project.CRMAPI.infraestructure.repositories.JpaCustomerRepository;
-import com.project.CRMAPI.infraestructure.repositories.JpaUserRepository;
+import com.project.CRMAPI.infrastructure.repositories.JpaCustomerRepository;
+import com.project.CRMAPI.infrastructure.repositories.JpaUserRepository;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

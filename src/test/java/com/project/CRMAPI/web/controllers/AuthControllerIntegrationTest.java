@@ -1,7 +1,7 @@
 package com.project.CRMAPI.web.controllers;
 
 import com.project.CRMAPI.domain.models.User;
-import com.project.CRMAPI.infraestructure.repositories.JpaUserRepository;
+import com.project.CRMAPI.infrastructure.repositories.JpaUserRepository;
 import com.project.CRMAPI.web.dtos.LoginRequest;
 import com.project.CRMAPI.web.dtos.SignUpRequest;
 import org.junit.jupiter.api.*;
