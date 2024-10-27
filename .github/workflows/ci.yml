@@ -34,10 +34,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      # Install dependencies and run tests
+      # Install dependencies
       - name: Build with Maven
-        run: mvn clean install --no-transfer-progress
+        run: mvn clean install -DskipTests --no-transfer-progress
 
-      # Run tests separately if needed (optional, if already done in 'install')
+      # Run tests separately
       - name: Run tests
         run: mvn test --no-transfer-progress
