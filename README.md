@@ -1,4 +1,5 @@
 # CRM Service
+![Build Status](https://github.com/Ferranv3/CRMAPI/actions/workflows/ci.yml/badge.svg?branch=main)
 
 This is a CRM backend service built with Java 21 and Spring Boot 3. It follows Hexagonal Architecture, DDD and SOLID principles to ensure a modular, testable, and maintainable codebase. The service manages customers and users, with a secure JWT-based authentication system.
 
