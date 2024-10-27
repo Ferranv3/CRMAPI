@@ -1,11 +1,21 @@
 # CRM Service
 
-This is a CRM backend service built with Java 21 and Spring Boot 3. It follows the Hexagonal Architecture and SOLID principles. The service manages customers and users and is secured using OAuth 2.0.
+This is a CRM backend service built with Java 21 and Spring Boot 3. It follows Hexagonal Architecture and SOLID principles to ensure a modular, testable, and maintainable codebase. The service manages customers and users, with a secure JWT-based authentication system.
 
 ## Features
-- Manage customers (CRUD)
-- Manage users (Admin role)
-- OAuth 2.0 Authentication
+- Customer Management (CRUD): Endpoints to create, read, update, and delete customer records.
+- User Management: Admin-specific operations for managing users and their roles.
+- Role-based Access Control: Restricted endpoints based on user roles, such as Admin.
+- JWT Authentication: Secure authentication and authorization using JSON Web Tokens (JWT).
+
+## Testing
+The project includes comprehensive testing to ensure functionality and security:
+
+- Unit Tests: Focus on individual service and component logic, including validation of domain models.
+- Integration Tests: Validate correct functioning of controllers and service interactions with the database, including:
+  - Customer CRUD operations
+  - User management and role updates
+  - JWT-based authentication and protected endpoints
 
 ## Requirements
 - Java 21
