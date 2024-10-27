@@ -33,7 +33,12 @@ public class UserController {
 
     @PatchMapping
     public ResponseEntity<User> updateUser(@RequestBody User user) {
-        return ResponseEntity.ok(userService.createUser(user));
+        return ResponseEntity.ok(userService.updateUser(user));
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<User> changeUserRole(@PathVariable UUID id, @RequestBody boolean isAdmin) {
+        return ResponseEntity.ok(userService.changeRole(id, isAdmin));
     }
 
     @DeleteMapping("/{id}")
