@@ -1,6 +1,6 @@
 # CRM Service
 
-This is a CRM backend service built with Java 21 and Spring Boot 3. It follows Hexagonal Architecture and SOLID principles to ensure a modular, testable, and maintainable codebase. The service manages customers and users, with a secure JWT-based authentication system.
+This is a CRM backend service built with Java 21 and Spring Boot 3. It follows Hexagonal Architecture, DDD and SOLID principles to ensure a modular, testable, and maintainable codebase. The service manages customers and users, with a secure JWT-based authentication system.
 
 ## Features
 - Customer Management (CRUD): Endpoints to create, read, update, and delete customer records.
@@ -29,3 +29,8 @@ The project includes comprehensive testing to ensure functionality and security:
 2. Run the application using Docker:
     ```bash
     docker-compose up
+
+## Running tests
+1. Run all tests of the project:
+    ```bash
+    mvn test
